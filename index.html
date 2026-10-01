@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel SynerGea - Dashboard</title>
+    
+    <!-- Tabler CSS & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta20/dist/css/tabler.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet"/>
+    
+    <!-- Custom Style System -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <i class="ti ti-brand-abstract" style="font-size: 1.8rem; color: #0052CC;"></i>
+                <h2>Panel SynerGea</h2>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li class="menu-item active" data-view="dashboard">
+                    <a class="menu-link">
+                        <div class="menu-link-content">
+                            <i class="ti ti-smart-home"></i>
+                            <span>Dashboard</span>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="menu-item" data-view="mi-cuenta">
+                    <a class="menu-link">
+                        <div class="menu-link-content">
+                            <i class="ti ti-user"></i>
+                            <span>Mi Cuenta</span>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="menu-item" data-view="estadisticas">
+                    <a class="menu-link">
+                        <div class="menu-link-content">
+                            <i class="ti ti-chart-bar"></i>
+                            <span>Estadísticas</span>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="menu-item" data-view="tpn">
+                    <a class="menu-link">
+                        <div class="menu-link-content">
+                            <i class="ti ti-users"></i>
+                            <span>TPN</span>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="menu-item" data-view="recomendaciones">
+                    <a class="menu-link">
+                        <div class="menu-link-content">
+                            <i class="ti ti-star"></i>
+                            <span>Recomendaciones</span>
+                        </div>
+                    </a>
+                </li>
+                
+                <!-- Submenu Educación -->
+                <li class="menu-item has-submenu" id="menu-educacion">
+                    <a class="menu-link" onclick="toggleSubmenu('submenu-educacion', 'chevron-educacion')">
+                        <div class="menu-link-content">
+                            <i class="ti ti-book"></i>
+                            <span>Educación</span>
+                        </div>
+                        <i class="ti ti-chevron-down chevron-icon" id="chevron-educacion"></i>
+                    </a>
+                    <ul class="submenu" id="submenu-educacion">
+                        <li class="menu-item" data-view="mis-cursos">
+                            <a class="menu-link">
+                                <div class="menu-link-content">
+                                    <i class="ti ti-school"></i>
+                                    <span>Mis Cursos</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="menu-item" data-view="catalogo-cursos">
+                            <a class="menu-link">
+                                <div class="menu-link-content">
+                                    <i class="ti ti-books"></i>
+                                    <span>Catálogo de Cursos</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="menu-item" data-view="unidades-educacion">
+                            <a class="menu-link">
+                                <div class="menu-link-content">
+                                    <i class="ti ti-clipboard-list"></i>
+                                    <span>Unidades de Educación</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="menu-item" data-view="gracias">
+                    <a class="menu-link">
+                        <div class="menu-link-content">
+                            <i class="ti ti-heart"></i>
+                            <span>Gracias por Sumar a Mi Negocio</span>
+                        </div>
+                    </a>
+                </li>
+                
+                <!-- Submenu Comunidad SynerGea -->
+                <li class="menu-item has-submenu" id="menu-comunidad">
+                    <a class="menu-link" onclick="toggleSubmenu('submenu-comunidad', 'chevron-comunidad')">
+                        <div class="menu-link-content">
+                            <i class="ti ti-world"></i>
+                            <span>Comunidad SynerGea</span>
+                        </div>
+                        <i class="ti ti-chevron-down chevron-icon" id="chevron-comunidad"></i>
+                    </a>
+                    <ul class="submenu" id="submenu-comunidad">
+                        <li class="menu-item" data-view="mi-capitulo">
+                            <a class="menu-link">
+                                <div class="menu-link-content">
+                                    <i class="ti ti-building"></i>
+                                    <span>Mi Capítulo</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="menu-item" data-view="comunidad-global">
+                            <a class="menu-link">
+                                <div class="menu-link-content">
+                                    <i class="ti ti-world-latitude"></i>
+                                    <span>Comunidad Global</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="menu-item" data-view="contactos-destacados">
+                            <a class="menu-link">
+                                <div class="menu-link-content">
+                                    <i class="ti ti-heart"></i>
+                                    <span>Contactos Destacados</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+        
+        <!-- Main Layout Area -->
+        <div class="main-wrapper">
+            <!-- Top Header Bar -->
+            <header class="top-header">
+                <div class="header-title" id="header-group-name">
+                    Grupo Tlah-lee
+                </div>
+                
+                <div class="header-user-nav">
+                    <button class="notification-btn" title="Notificaciones">
+                        <i class="ti ti-bell"></i>
+                        <span class="badge-count">2</span>
+                    </button>
+                    
+                    <div class="user-profile-name" id="top-user-name">
+                        CARLOS RENDON
+                    </div>
+                    
+                    <button class="logout-btn" onclick="logout()" title="Cerrar Sesión">
+                        <i class="ti ti-logout"></i>
+                    </button>
+                </div>
+            </header>
+            
+            <!-- Dynamic View Container -->
+            <main class="content-body" id="app-content">
+                <!-- Vistas dinámicas se renderizan mediante app.js -->
+            </main>
+        </div>
+    </div>
+    
+    <!-- MODAL: REGISTRAR TPN -->
+    <div class="modal-overlay" id="modal-tpn">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-title"><i class="ti ti-users me-2"></i>Registrar Reunión TPN</div>
+                <button class="modal-close-btn" onclick="closeModal('modal-tpn')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="form-tpn">
+                    <div class="form-group mb-3">
+                        <label class="form-label">Fecha de la Reunión</label>
+                        <input type="date" class="form-control" id="tpn-fecha" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Reunión Con (Nombre)</label>
+                        <input type="text" class="form-control" id="tpn-nombre" placeholder="Ej. BEATRIZ ISLAS" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="tpn-email" placeholder="ejemplo@correo.com" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Iniciado Por</label>
+                        <input type="text" class="form-control" id="tpn-iniciado" value="CARLOS RENDON" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Ubicación</label>
+                        <select class="form-control" id="tpn-ubicacion">
+                            <option value="PRESENCIAL">PRESENCIAL</option>
+                            <option value="Zoom">Zoom</option>
+                            <option value="Oficinas de Grupo">Oficinas de Grupo</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Temas / Notas</label>
+                        <textarea class="form-control" id="tpn-notas" rows="3" placeholder="Detalles de la reunión..." required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-primary" onclick="closeModal('modal-tpn')">Cancelar</button>
+                <button class="btn btn-success" onclick="saveTPN()"><i class="ti ti-check me-1"></i> Guardar TPN</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: NUEVA RECOMENDACIÓN -->
+    <div class="modal-overlay" id="modal-recomendacion">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-title"><i class="ti ti-star me-2"></i>Nueva Recomendación</div>
+                <button class="modal-close-btn" onclick="closeModal('modal-recomendacion')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="form-recomendacion">
+                    <div class="form-group mb-3">
+                        <label class="form-label">Fecha</label>
+                        <input type="date" class="form-control" id="rec-fecha" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Recomendar a (Para)</label>
+                        <input type="text" class="form-control" id="rec-para" placeholder="Ej. Miriam Veloz" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Nombre del Cliente Recomendado</label>
+                        <input type="text" class="form-control" id="rec-cliente" placeholder="Ej. JUAN CARLOS OSORIO" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Teléfono de Contacto</label>
+                        <input type="tel" class="form-control" id="rec-telefono" placeholder="Ej. 7226410679" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Temperatura de la Referencia</label>
+                        <select class="form-control" id="rec-temp">
+                            <option value="Caliente">Caliente (Rojo)</option>
+                            <option value="Tibio">Tibio (Naranja)</option>
+                            <option value="Frío">Frío (Azul)</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-primary" onclick="closeModal('modal-recomendacion')">Cancelar</button>
+                <button class="btn btn-success" onclick="saveRecomendacion()"><i class="ti ti-check me-1"></i> Guardar Recomendación</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: AGREGAR UNIDAD DE EDUCACIÓN -->
+    <div class="modal-overlay" id="modal-educacion">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-title"><i class="ti ti-clipboard-list me-2"></i>Agregar Registro Educativo</div>
+                <button class="modal-close-btn" onclick="closeModal('modal-educacion')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="form-educacion">
+                    <div class="form-group mb-3">
+                        <label class="form-label">Fecha de Actividad</label>
+                        <input type="date" class="form-control" id="edu-fecha" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Podcasts / Webinars</label>
+                        <input type="number" class="form-control" id="edu-podcasts" min="0" value="0">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Formaciones Presenciales</label>
+                        <input type="number" class="form-control" id="edu-presenciales" min="0" value="0">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Cursos Online</label>
+                        <input type="number" class="form-control" id="edu-online" min="0" value="0">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Libros Leídos</label>
+                        <input type="number" class="form-control" id="edu-libros" min="0" value="0">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-primary" onclick="closeModal('modal-educacion')">Cancelar</button>
+                <button class="btn btn-success" onclick="saveEducacion()"><i class="ti ti-check me-1"></i> Registrar Unidades</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: REGISTRAR GRACIAS POR SUMAR -->
+    <div class="modal-overlay" id="modal-gracias">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-title"><i class="ti ti-heart me-2"></i>Registrar Negocio Concretado (Gracias)</div>
+                <button class="modal-close-btn" onclick="closeModal('modal-gracias')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="form-gracias">
+                    <div class="form-group mb-3">
+                        <label class="form-label">Persona a Agradecer</label>
+                        <input type="text" class="form-control" id="gra-persona" placeholder="Ej. Miriam Veloz" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Tipo de Negocio</label>
+                        <select class="form-control" id="gra-tipo">
+                            <option value="Nuevo">Nuevo</option>
+                            <option value="Repetido">Repetido</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Referencia</label>
+                        <select class="form-control" id="gra-referencia">
+                            <option value="Interna">Interna</option>
+                            <option value="Externa">Externa</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Monto / Valor ($ MXN)</label>
+                        <input type="number" step="0.01" class="form-control" id="gra-valor" placeholder="Ej. 1800.00" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-primary" onclick="closeModal('modal-gracias')">Cancelar</button>
+                <button class="btn btn-success" onclick="saveGracias()"><i class="ti ti-check me-1"></i> Registrar Gracias</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabler Core JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta20/dist/js/tabler.min.js"></script>
+    
+    <!-- Scripts de la Aplicación -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
